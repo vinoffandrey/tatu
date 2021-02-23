@@ -1,0 +1,2171 @@
+$maxWidth: 1520;
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize - $addSize * 0.7;
+	@media (max-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+	}
+	@media (min-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+	}
+}
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+nav,
+footer,
+header,
+aside {
+	display: block;
+}
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	overflow-x: hidden;
+}
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+input::-ms-clear {
+	display: none;
+}
+button {
+	cursor: pointer;
+}
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+a,
+a:visited {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: "Montserrat", sans-serif;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+}
+@font-face {
+	font-family: "MuseoSansCyrl_100";
+	src: url("../assets/fonts/MuseoSansCyrl_100.otf");
+}
+@font-face {
+	font-family: "MuseoSansCyrl_300";
+	src: url("../assets/fonts/MuseoSansCyrl_300.otf");
+}
+@font-face {
+	font-family: "MuseoSansCyrl_500";
+	src: url("../assets/fonts/MuseoSansCyrl_500.otf");
+}
+@font-face {
+	font-family: "MuseoSansCyrl_700";
+	src: url("../assets/fonts/MuseoSansCyrl_700.otf");
+}
+@font-face {
+	font-family: "MuseoSansCyrl_900";
+	src: url("../assets/fonts/MuseoSansCyrl_900.otf");
+}
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: #efefef;
+}
+body.lock {
+	overflow: hidden;
+}
+header {
+	flex: 0 1 auto;
+}
+main {
+	flex: 1 1 auto;
+}
+footer {
+	flex: 0 1 auto;
+}
+/*===================Стилизация шапки====================*/
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px 20px;
+}
+.header {
+	&__container {
+		display: flex;
+		position: relative;
+		padding: 15px 10px;
+		@media (max-width: 980px) {
+			justify-content: space-between;
+		}
+	}
+
+	&__icon {
+		flex: 0 1 80px;
+		width: 80px;
+		height: 56px;
+		a {
+			display: block;
+			background: url("../assets/img/LOGO.png") 0 0 / 100% no-repeat;
+			cursor: pointer;
+			width: 80px;
+			height: 56px;
+		}
+	}
+
+	&__menu {
+		flex: 1 1 55%;
+		display: flex;
+		align-items: center;
+		padding: 0 0 0 20px;
+		padding-right: 20px;
+		ul {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: self-end;
+			li {
+				font-family: "MuseoSansCyrl_500";
+				font-size: 14px;
+				color: #565656;
+				padding: 0 5px;
+				display: flex;
+				flex-wrap: nowrap;
+				a {
+					display: flex;
+					flex-wrap: nowrap;
+					color: #565656;
+					margin: 18px 0 0 0;
+					&:hover {
+						border-bottom: 2.5px solid #565656;
+						transition: all 0.2s ease 0s;
+					}
+					&:not(:hover) {
+						transition: all 0.2s ease 0s;
+					}
+				}
+			}
+		}
+		@media (max-width: 980px) {
+			position: fixed;
+			top: 0;
+			right: -100%;
+			width: 100%;
+			height: 100%;
+			z-index: 5;
+			padding: 0;
+			text-align: center;
+			transition: all 0.2s;
+			opacity: 0;
+			overflow: hidden;
+			transition-delay: 0;
+			pointer-events: none;
+			transform: translateY(80px);
+			display: flex;
+			align-items: flex-start;
+			ul {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				margin: 0 20px 0 0;
+				li {
+					padding: 15px 0;
+					font-size: 20px;
+					justify-content: flex-end;
+					font-family: "MuseoSansCyrl_700";
+				}
+			}
+		}
+	}
+
+	&__right-content {
+		flex: 0 1 35%;
+		display: flex;
+		align-items: center;
+		@media (max-width: 980px) {
+			flex: 0 1 90%;
+			justify-content: flex-start;
+			align-items: center;
+			margin: 0 0 0 40px;
+		}
+		@media (max-width: 550px) {
+			margin: 0 60px 0 30px;
+			justify-content: flex-end;
+		}
+	}
+
+	&__contacts {
+		flex: 0 1 55%;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 14px;
+		color: #565656;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-wrap: nowrap;
+		cursor: pointer;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		img {
+			margin: 0 10px 0 0;
+			width: 26px;
+			height: 28px;
+			cursor: pointer;
+		}
+		.contacts__text {
+			@media (max-width: 550px) {
+				display: none;
+			}
+		}
+		a {
+			color: #565656;
+			display: flex;
+			flex-wrap: nowrap;
+			@media (max-width: 980px) {
+				margin: 0 10px 0 0;
+			}
+		}
+		@media (max-width: 980px) {
+			flex: none;
+		}
+	}
+
+	&__address {
+		flex: 0 1 45%;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-wrap: nowrap;
+		a {
+			color: #565656;
+		}
+		img {
+			margin: 0 10px 0 0;
+			width: 24px;
+			height: 29px;
+			cursor: pointer;
+		}
+		@media (max-width: 980px) {
+			flex: none;
+			margin-left: 15px;
+		}
+		@media (max-width: 550px) {
+			margin-left: 2px;
+			p {
+				display: none;
+			}
+		}
+	}
+}
+.menu {
+	&__active {
+		background: url("../assets/img/active.png") -10px 0 / 100% no-repeat;
+		width: 101px;
+		height: 50px;
+		display: flex;
+		align-items: self-end;
+		justify-content: center;
+		@media (max-width: 980px) {
+			background: none;
+		}
+	}
+	&__burger {
+		display: none;
+		@media (max-width: 980px) {
+			top: 30px;
+			right: 5%;
+			display: block;
+			width: 30px;
+			height: 25px;
+			margin: 0;
+			position: absolute;
+			z-index: 3;
+			cursor: pointer;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			span {
+				position: absolute;
+				background-color: #565656;
+				left: 0;
+				width: 100%;
+				height: 4.4px;
+				top: 11px;
+				border-radius: 20px;
+				transform: rotate(-180deg);
+				transition: transform 0.6s ease 0s;
+			}
+			&:before {
+				top: 0;
+				transition-delay: 50ms;
+				transition: all 0.7s;
+			}
+			&:before,
+			&:after {
+				content: "";
+				background-color: #565656;
+				position: absolute;
+				width: 100%;
+				height: 4.4px;
+				left: 0;
+				border-radius: 20px;
+				transition: all 0.7s;
+			}
+			&:after {
+				bottom: 0;
+				transition-delay: 100ms;
+				transition: all 0.7s;
+			}
+		}
+	}
+}
+.menu__burger.active {
+	position: absolute;
+	top: 30px;
+	right: 5%;
+	span {
+		transform: rotate(180deg);
+		transition: transform 0.6s ease 0s;
+	}
+	&:before {
+		transform: translateY(-50px);
+		opacity: 0;
+		transition-delay: 50ms;
+	}
+	&:after {
+		transform: translateY(-50px);
+		opacity: 0;
+		transition-delay: 100ms;
+	}
+}
+.header__menu.active {
+	top: 0;
+	right: 0;
+	overflow: scroll;
+	margin-bottom: 10px;
+	position: fixed;
+	background-color: #efefef;
+	opacity: 1;
+	transition-delay: 0.25s;
+	pointer-events: auto;
+}
+
+/*===================Стилизация главного блока====================*/
+
+.main {
+	&__container {
+		padding: 15px 0 !important;
+	}
+	&__body {
+		position: relative;
+	}
+	&__background {
+		background: url("../assets/img/main__back2.png") 0 0 / 100% no-repeat;
+		background-position-x: center;
+		background-size: auto;
+		height: 100vh;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		z-index: 2;
+	}
+	&__subtitle {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 18px;
+		color: #7e7e7e;
+		padding: 190px 15px 0 15px;
+		display: flex;
+		justify-content: space-between;
+		align-items: self-end;
+		position: relative;
+		z-index: 2;
+		a {
+			font-family: "MuseoSansCyrl_300";
+			border-bottom: 1px solid #808080;
+			color: #808080;
+			font-size: 16px;
+			margin: 0 100px 0 0;
+		}
+	}
+
+	&__title {
+		width: 100%;
+		text-align: center;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 182px;
+		color: #ffffff;
+		text-transform: uppercase;
+		letter-spacing: 22px;
+		position: relative;
+		z-index: 0;
+		@media (max-width: 1200px) {
+			font-size: 14vw;
+		}
+	}
+	&__button {
+		margin: 230px 0 0 0;
+		display: flex;
+		justify-content: flex-end;
+		padding: 0 15px;
+	}
+}
+.link {
+	&__button {
+		position: relative;
+		z-index: 3;
+	}
+}
+.button {
+	font-size: 16px;
+	color: #ffffff;
+	font-family: "MuseoSansCyrl_300";
+	padding: 17px 35px;
+	background-color: #515151;
+	&:hover {
+		color: #565656;
+		background-color: #fff324;
+		transition: all 0.3s ease 0s;
+	}
+	&:not(:hover) {
+		transition: all 0.3s ease 0s;
+	}
+}
+
+/*===================Стилизация блока о нас====================*/
+
+.about {
+	&__container {
+		background-color: #ffffff;
+		position: relative;
+		z-index: 2;
+		margin: 150px auto 0 auto;
+	}
+
+	&__body {
+		padding: 20px 90px;
+		display: flex;
+		flex-direction: column;
+		@media (max-width: 1200px) {
+			padding: 0 50px 20px 50px;
+		}
+		@media (max-width: 1000px) {
+			padding: 0 0 20px 20px;
+		}
+		@media (max-width: 500px) {
+			padding: 0 0 10px 20px;
+		}
+	}
+	&__top {
+		display: flex;
+		@media (max-width: 650px) {
+			flex-wrap: wrap;
+		}
+	}
+	&__left {
+		flex: 0 1 75%;
+		padding: 30px 20px 30px 0;
+		@media (max-width: 1000px) {
+			padding: 20px 20px 30px 0;
+		}
+		@media (max-width: 650px) {
+			flex: 0 1 100%;
+			padding: 30px 20px 10px 0;
+		}
+	}
+
+	&__title {
+		position: relative;
+		@media (max-width: 1200px) {
+			padding: 0 0 0 50px;
+		}
+		&:before {
+			content: "";
+			background-color: #fff324;
+			width: 80px;
+			height: 25px;
+			position: absolute;
+			top: 2px;
+			left: -56px;
+			z-index: -1;
+			@media (max-width: 1200px) {
+				left: 0px;
+			}
+		}
+	}
+
+	&__text {
+		font-family: "MuseoSansCyrl_300";
+		padding: 20px 0 0 0;
+		font-size: 16px;
+		color: #888888;
+		line-height: 1.5;
+	}
+
+	&__right {
+		flex: 0 0 244px;
+		border-left: 1px solid #888888;
+		padding: 30px 0 0 45px;
+		min-width: 0;
+		@media (max-width: 1000px) {
+			padding: 20px 0px 0 25px;
+		}
+		@media (max-width: 650px) {
+			border-left: none;
+			padding: 20px 0px 0 0;
+			display: none;
+		}
+	}
+
+	&__sertificate-title {
+		text-transform: uppercase;
+		position: relative;
+		&:before {
+			content: "";
+			width: 27px;
+			height: 100px;
+			position: absolute;
+			background-color: #efefef;
+			top: -67px;
+			left: -8px;
+			z-index: -1;
+			@media (max-width: 650px) {
+				height: 50px;
+				top: -20px;
+			}
+		}
+	}
+	&__slider {
+		min-width: 0;
+		position: relative;
+		padding: 0 30px 0 0;
+	}
+}
+.title {
+	font-family: "MuseoSansCyrl_700";
+	font-size: 25px;
+	color: #565656;
+	text-transform: uppercase;
+}
+.about__slider {
+	.slick-list {
+		width: 174px;
+	}
+}
+.slider {
+	min-width: 0;
+	&__item {
+		width: 174px !important;
+	}
+}
+.slick-list {
+	overflow: hidden;
+}
+.slick-track {
+	display: flex;
+}
+.about__slider {
+	margin: 30px 0 0 0;
+	width: 204px;
+	@media (max-width: 650px) {
+		margin: 20px 0 10px 0;
+	}
+	.slick-arrow {
+		position: absolute;
+		top: 40%;
+		z-index: 5;
+		font-size: 0;
+		&.slick-prev {
+			display: none;
+		}
+		&.slick-next {
+			right: 0;
+			background: url("../assets/img/about-arrow.png") 0 0 no-repeat;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			width: 20px;
+			height: 40px;
+		}
+	}
+}
+.about {
+	&__center {
+		flex: 1 1 100%;
+		display: flex;
+		@media (max-width: 1000px) {
+			flex-wrap: wrap;
+			margin: 10px 0 0 0;
+		}
+	}
+
+	&__center-left {
+		flex: 0 1 43%;
+		padding: 0 20px 0 0;
+		@media (max-width: 1000px) {
+			flex: 0 1 100%;
+			text-align: center;
+			padding: 0;
+		}
+		img {
+			object-fit: cover;
+			@media (max-width: 1000px) {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	&__center-right {
+		flex: 0 1 52%;
+		padding: 35px 0 0 12px;
+		@media (max-width: 1000px) {
+			flex: 0 1 100%;
+			padding: 20px 0 0 0;
+		}
+	}
+	&__center-title {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 20px;
+		color: #565656;
+	}
+
+	&__center-text {
+		padding: 20px 0 0 0;
+		font-family: "MuseoSansCyrl_300";
+		font-size: 16px;
+		color: #888888;
+		line-height: 1.4;
+		ul li {
+			margin: 0 0 0 18px;
+		}
+	}
+}
+
+/*===================Стилизация блока награды====================*/
+
+.nagrad {
+	&__container {
+		background-color: #ffffff;
+		position: relative;
+		z-index: 2;
+		@media (max-width: 1000px) {
+			padding: 0 20px 15px 20px;
+		}
+	}
+
+	&__body {
+		padding: 20px 90px;
+		display: flex;
+		@media (max-width: 1000px) {
+			padding: 0 0 20px 20px;
+		}
+		@media (max-width: 500px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__left {
+		flex: 0 1 50%;
+		border-right: 1px solid #888888;
+		display: flex;
+		padding: 0 20px 0 0;
+		@media (max-width: 1000px) {
+			flex-wrap: wrap;
+		}
+		@media (max-width: 500px) {
+			flex: 1 1 100%;
+			border-bottom: 1px solid #888888;
+			border-right: none;
+			padding: 0;
+		}
+	}
+
+	&__title {
+		position: relative;
+		@media (max-width: 1000px) {
+			flex: 1 1 100%;
+			margin: 0 0 15px 0;
+			padding: 0 0 0 50px;
+		}
+		&:before {
+			content: "";
+			background-color: #fff324;
+			width: 80px;
+			height: 25px;
+			position: absolute;
+			top: 2px;
+			left: -56px;
+			z-index: -1;
+			@media (max-width: 1000px) {
+				left: 0px;
+			}
+		}
+	}
+
+	&__titule {
+		margin: 0 0 0 40px;
+		@media (max-width: 1000px) {
+			margin: 0;
+		}
+	}
+
+	&__dillers {
+		flex: 0 1 50%;
+		display: flex;
+		justify-content: flex-end;
+		@media (max-width: 1000px) {
+			flex-wrap: wrap;
+			padding: 0 15px;
+			justify-content: flex-start;
+		}
+		@media (max-width: 500px) {
+			flex: 1 1 100%;
+			padding: 20px 0 0 0;
+		}
+		p {
+			@media (max-width: 1000px) {
+				order: 1;
+				flex: 1 1 100%;
+			}
+			@media (max-width: 500px) {
+				padding: 0 0 20px 0;
+			}
+		}
+		img {
+			object-fit: contain;
+			padding: 0 0 0 15%;
+			margin: 0 10% 0 0;
+			@media (max-width: 1000px) {
+				order: 2;
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+}
+.titule {
+	&__line {
+		display: flex;
+		align-items: center;
+		margin: 0 0 30px 0;
+		p {
+			margin: 0 0 0 10px;
+			font-family: "MuseoSansCyrl_300";
+			font-size: 15px;
+			color: #888888;
+		}
+	}
+}
+
+/*===================Стилизация блока галереи====================*/
+
+.gallery {
+	&__container {
+		padding: 80px 0;
+		position: relative;
+		z-index: 2;
+		@media (max-width: 1200px) {
+			padding: 50px 20px;
+		}
+		@media (max-width: 655px) {
+			padding: 40px 20px;
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-bottom: 1px solid #888888;
+	}
+
+	&__title {
+		text-align: center;
+		p {
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				height: 80px;
+				width: 25px;
+				position: absolute;
+				top: -42px;
+				left: -12px;
+				z-index: -1;
+			}
+		}
+	}
+
+	&__tatu {
+		display: flex;
+		max-width: 1200px;
+		align-items: center;
+		margin: 60px 0 100px 0;
+		padding: 0 50px 0 0;
+		min-width: 0;
+		flex-wrap: wrap;
+		@media (max-width: 1200px) {
+			padding: 0 50px;
+			margin: 40px 0 30px 0;
+		}
+	}
+
+	&__pirsing {
+		display: flex;
+		max-width: 1200px;
+		align-items: center;
+		min-width: 0;
+		flex-wrap: wrap;
+		padding: 0 0 0 50px;
+		justify-content: flex-end;
+		@media (max-width: 1200px) {
+			padding: 0 30px;
+			margin: 40px 0 30px 0;
+		}
+	}
+	&__button {
+		display: inline-block;
+		max-width: 270px;
+		margin: 70px 0 50px 0;
+		@media (max-width: 1200px) {
+			margin: 20px 0 50px 0;
+		}
+	}
+}
+.tatu {
+	&__left {
+		flex: 0 1 15%;
+		border: 1px solid #565656;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 20px;
+		color: #565656;
+		text-transform: uppercase;
+		position: relative;
+		padding: 50px;
+		max-height: 115px;
+		margin: 0 45px 0 0;
+		@media (max-width: 1200px) {
+			border: none;
+			padding: 0 0 20px 0;
+		}
+		&:after {
+			content: "";
+			width: 15px;
+			height: 15px;
+			display: block;
+			position: absolute;
+			bottom: 40%;
+			right: -8.3px;
+			border-bottom: 1px solid #565656;
+			border-left: 1px solid #565656;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-135deg);
+			background: linear-gradient(45deg, #efefef 50%, rgba(255, 255, 255, 0) 50%);
+			@media (max-width: 1200px) {
+				background: none;
+				border: none;
+			}
+		}
+	}
+
+	&__right {
+		min-width: 0;
+		flex: 0 1 75%;
+		@media (max-width: 1200px) {
+			flex: 0 1 90%;
+		}
+	}
+}
+.pirsing {
+	&__left {
+		flex: 0 1 75%;
+		margin: 0 45px 0 0;
+		min-width: 0px;
+		@media (max-width: 1200px) {
+			flex: 0 1 90%;
+			order: 2;
+		}
+	}
+
+	&__right {
+		flex: 0 1 15%;
+		border: 1px solid #565656;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 20px;
+		color: #565656;
+		text-transform: uppercase;
+		position: relative;
+		padding: 50px 70px;
+		max-height: 115px;
+		@media (max-width: 1200px) {
+			order: 1;
+			border: none;
+			padding: 0 40px 20px 0;
+		}
+		&:after {
+			content: "";
+			width: 15px;
+			height: 15px;
+			display: block;
+			position: absolute;
+			bottom: 40%;
+			left: -8px;
+			border-bottom: 1px solid #565656;
+			border-left: 1px solid #565656;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(45deg);
+			background: linear-gradient(45deg, #efefef 50%, rgba(255, 255, 255, 0) 50%);
+			@media (max-width: 1200px) {
+				background: none;
+				border: none;
+			}
+		}
+	}
+}
+.tatu {
+	&__slider {
+		position: relative;
+		min-width: 0;
+		.slick-arrow {
+			&.slick-prev {
+				display: none !important;
+			}
+			&.slick-next {
+				position: absolute;
+				font-size: 0;
+				right: -55px;
+				top: 45%;
+				background: url("../assets/img/strelka-right.jpg") 0 0 no-repeat;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				width: 33px;
+				height: 33px;
+			}
+		}
+	}
+	&__item {
+		min-width: 0px;
+		max-width: 320px;
+		margin: 0 15px;
+		position: relative;
+		cursor: pointer;
+		&:hover {
+			transition-duration: 3s;
+		}
+		&:hover:before {
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+			content: "";
+			background: url("../assets/img/uvelich.png") 50% 50% no-repeat rgba(100%, 95%, 14%, 0.88);
+		}
+		img {
+			width: 100%;
+			height: auto;
+			min-width: 0;
+			cursor: pointer;
+		}
+	}
+}
+.pirsing {
+	&__slider {
+		position: relative;
+		min-width: 0;
+		.slick-arrow {
+			&.slick-prev {
+				display: none !important;
+			}
+			&.slick-next {
+				position: absolute;
+				font-size: 0;
+				left: -55px;
+				top: 45%;
+				background: url("../assets/img/strelk-left.jpg") 0 0 no-repeat;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				width: 33px;
+				height: 33px;
+			}
+		}
+	}
+	&__item {
+		min-width: 0px;
+		max-width: 320px;
+		margin: 0 15px;
+		min-width: 0;
+		img {
+			width: 100%;
+			height: auto;
+			min-width: 0;
+		}
+	}
+}
+
+/*===================Стилизация блока услуг====================*/
+
+.cost {
+	&__container {
+		padding: 0 0 70px 0;
+		@media (max-width: 1200px) {
+			padding: 0 0 50px 0;
+		}
+		@media (max-width: 760px) {
+			padding: 0 0 20px 0;
+		}
+	}
+	&__title {
+		text-align: center;
+		position: relative;
+		p {
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				height: 80px;
+				width: 25px;
+				position: absolute;
+				top: -42px;
+				left: -10px;
+				z-index: -1;
+				@media (max-width: 655px) {
+					height: 60px;
+					top: -32px;
+				}
+			}
+		}
+	}
+
+	&__column-body {
+		display: flex;
+		justify-content: space-between;
+		margin: 50px 0 0 0;
+		flex-wrap: wrap;
+		@media (max-width: 1200px) {
+			margin: 40px 0 0 0;
+			padding: 0 20px;
+		}
+		@media (max-width: 760px) {
+			justify-content: space-around;
+		}
+	}
+
+	&__column {
+		flex: 0 1 28%;
+		background-color: #f8f8f8;
+		display: flex;
+		min-width: 220px;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 0 50px 0;
+		@media (max-width: 1200px) {
+			margin: 0 10px;
+		}
+		@media (max-width: 760px) {
+			flex: 0 1 45%;
+			margin: 0 10px 30px 10px;
+		}
+		@media (max-width: 520px) {
+			flex: 0 1 80%;
+			margin: 0 10px 30px 10px;
+		}
+		@media (max-width: 400px) {
+			flex: 0 1 100%;
+			margin: 0 10px 30px 10px;
+		}
+	}
+	&__flex {
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		@media (max-width: 1200px) {
+			padding: 0 15px;
+		}
+	}
+	&__column-img {
+		flex: 0 1 auto;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__column-title {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 18px;
+		color: #515151;
+		text-transform: uppercase;
+		margin: 40px 0 20px 0;
+		flex: 0 1 auto;
+		text-align: center;
+	}
+
+	&__column-text {
+		font-family: "MuseoSansCyrl_300";
+		font-size: 14px;
+		color: #828282;
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		p {
+			margin: 5px 0;
+		}
+	}
+
+	&__column-price {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 18px;
+		color: #515151;
+		flex: 0 1 auto;
+		margin: 20px 0 50px 0;
+		display: flex;
+		span {
+			font-size: 11px;
+			margin: 0 0 0 3px;
+		}
+	}
+
+	&__column-btn {
+		flex: 0 1 auto;
+	}
+
+	&__button {
+		padding: 12px 25px;
+		font-size: 15px;
+	}
+}
+
+/*===================Стилизация блока акций====================*/
+
+.aktsii {
+	&__container {
+		background-color: #ffffff;
+		position: relative;
+		z-index: 2;
+		padding: 15px 20px 80px 20px;
+		@media (max-width: 980px) {
+			padding: 15px 20px 50px 20px;
+		}
+	}
+
+	&__title {
+		padding: 50px 70px 40px 70px;
+		@media (max-width: 980px) {
+			padding: 20px 70px 30px 70px;
+		}
+		p {
+			position: relative;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				width: 80px;
+				height: 25px;
+				position: absolute;
+				top: 2px;
+				left: -56px;
+				z-index: -1;
+			}
+		}
+	}
+
+	&__body {
+		padding: 0 80px;
+		display: grid;
+		column-gap: 75px;
+		row-gap: 50px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		@media (max-width: 1200px) {
+			padding: 0 16px;
+		}
+		@media (max-width: 750px) {
+			row-gap: 20px;
+			column-gap: 25px;
+		}
+	}
+	&__column {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template: auto 1fr minmax(40px, auto) / 1fr;
+		background-color: #f5f5f5;
+		padding: 40px 25px;
+		text-align: center;
+		justify-items: center;
+	}
+
+	&__column-img {
+		text-align: center;
+		min-height: 140px;
+	}
+	&__column-title {
+		text-align: center;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 22px;
+		color: #565656;
+		text-transform: uppercase;
+	}
+
+	&__column-text {
+		text-align: center;
+		font-family: "MuseoSansCyrl_500";
+		font-size: 15px;
+		color: #565656;
+		margin: 20px 0 0 0;
+	}
+
+	&__column-btn {
+		display: grid;
+		grid-template: auto 1fr / 1fr;
+		margin: 30px 0 0 0;
+	}
+
+	&__button {
+		background-color: #f5f5f5;
+		border: 1px solid #565656;
+		color: #565656;
+		max-width: 130px;
+		padding: 12px 25px;
+		font-size: 15px;
+		&:hover {
+			border: 1px solid #fff324;
+		}
+	}
+}
+
+/*===================Стилизация блока отзывов====================*/
+
+.coments {
+	&__container {
+		padding: 80px 0;
+		border-bottom: 1px solid #888888;
+		@media (max-width: 850px) {
+			padding: 60px 0;
+		}
+		@media (max-width: 650px) {
+			padding: 50px 0;
+		}
+	}
+	&__title {
+		text-align: center;
+		position: relative;
+		p {
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				height: 80px;
+				width: 25px;
+				position: absolute;
+				top: -42px;
+				left: -10px;
+				z-index: -1;
+				@media (max-width: 655px) {
+					height: 60px;
+					top: -32px;
+				}
+			}
+		}
+	}
+
+	&__slider {
+		padding: 30px 0;
+		@media (max-width: 655px) {
+			padding: 20px 0;
+		}
+		.slick-dots {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 15px 0 0 0;
+			li {
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				list-style: none;
+				&.slick-active {
+					button {
+						background-color: #fff324;
+						border: 3px solid #ffffff;
+					}
+				}
+			}
+			button {
+				font-size: 0;
+				width: 20px;
+				height: 20px;
+				background-color: #ffffff;
+				border-radius: 50%;
+				margin: 0 5px;
+				@media (max-width: 850px) {
+					width: 15px;
+					height: 15px;
+				}
+			}
+		}
+	}
+
+	&__item {
+		margin: 0 15px;
+	}
+
+	&__item-body {
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__button {
+		text-align: center;
+		margin: 20px 0 0 0;
+	}
+}
+
+/*===================Стилизация блока FAQ====================*/
+
+.faq {
+	&__container {
+		padding: 80px 0;
+		@media (max-width: 1200px) {
+			padding: 50px 0;
+		}
+		@media (max-width: 655px) {
+			padding: 40px 0;
+		}
+	}
+
+	&__title {
+		text-align: center;
+		p {
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				height: 80px;
+				width: 25px;
+				position: absolute;
+				top: -42px;
+				left: -10px;
+				z-index: -1;
+				@media (max-width: 655px) {
+					height: 60px;
+					top: -32px;
+				}
+			}
+		}
+	}
+
+	&__body {
+		padding: 40px 0 0 0;
+		@media (max-width: 1200px) {
+			padding: 40px 20px 0 20px;
+		}
+		@media (max-width: 655px) {
+			padding: 20px 20px 0 20px;
+		}
+	}
+
+	&__item {
+		margin-bottom: 10px;
+	}
+
+	&__item-title {
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		background-color: #f8f8f8;
+		padding: 15px 50px 15px 30px;
+		font-family: "MuseoSansCyrl_500";
+		@include adaptiv-font(17, 15);
+		color: #565656;
+		position: relative;
+		cursor: pointer;
+		@media (max-width: 600px) {
+			padding: 15px 50px 15px 20px;
+		}
+		&.active {
+			&:after {
+				content: "";
+				background: url("../assets/img/strelka.jpg") 0 0 / 100% no-repeat;
+				position: absolute;
+				width: 33px;
+				height: 33px;
+				top: 19%;
+				right: 9px;
+			}
+		}
+		&:after {
+			content: "";
+			background: url("../assets/img/strelka_ser.jpg") 0 0 / 100% no-repeat;
+			position: absolute;
+			width: 33px;
+			height: 33px;
+			top: 19%;
+			right: 9px;
+		}
+	}
+
+	&__item-subtitle {
+		display: none;
+		font-family: "MuseoSansCyrl_300";
+		font-size: 15px;
+		color: #565656;
+		padding: 7px 10px;
+		margin: 10px 0 20px 50px;
+		border-left: 4px solid #565656;
+		@media (max-width: 1200px) {
+			margin: 10px 0 20px 30px;
+		}
+		@media (max-width: 600px) {
+			margin: 10px 0 20px 10px;
+		}
+		p {
+			margin: 0 0 10px 0;
+		}
+	}
+}
+
+/*===================Стилизация блока новости====================*/
+
+.news {
+	&__container {
+		background-color: #ffffff;
+		position: relative;
+		z-index: 2;
+		padding: 15px 20px 80px 20px;
+		@media (max-width: 1200px) {
+			padding: 15px 20px 60px 20px;
+		}
+	}
+
+	&__title {
+		padding: 50px 70px 10px 70px;
+		@media (max-width: 1200px) {
+			padding: 20px 70px 10px 70px;
+		}
+		p {
+			position: relative;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				width: 80px;
+				height: 25px;
+				position: absolute;
+				top: 2px;
+				left: -56px;
+				z-index: -1;
+			}
+		}
+	}
+
+	&__body {
+		display: grid;
+		padding: 30px 80px 0 80px;
+		gap: 50px 75px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		@media (max-width: 1200px) {
+			padding: 20px 16px 0 16px;
+		}
+		@media (max-width: 970px) {
+			justify-items: center;
+		}
+	}
+
+	&__column {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template: auto minmax(40px, auto) 1fr / 1fr;
+		max-width: 330px;
+		background-color: #f5f5f5;
+		text-align: center;
+		justify-items: center;
+		padding: 0 0 40px 0;
+		column-gap: 75px;
+		&:last-child {
+			@media (max-width: 970px) {
+				display: none;
+			}
+		}
+	}
+
+	&__column-img {
+		text-align: center;
+		img {
+			width: 100%;
+		}
+		width: 100%;
+	}
+
+	&__column-title {
+		text-align: center;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 22px;
+		text-transform: uppercase;
+		padding: 0 15px;
+		margin: 15px 0;
+		a {
+			color: #565656;
+			&:hover {
+				border-bottom: 1px solid #333;
+			}
+		}
+	}
+
+	&__column-text {
+		text-align: center;
+		font-family: "MuseoSansCyrl_300";
+		font-size: 15px;
+		color: #565656;
+		padding: 0 25px;
+		display: grid;
+	}
+	&__button {
+		text-align: center;
+		margin: 60px 0 0 0;
+	}
+}
+
+/*===================Стилизация блока контакты====================*/
+
+.contacts {
+	&__container {
+		padding: 100px 0 0 0;
+		@media (max-width: 1200px) {
+			padding: 70px 0 0 0;
+		}
+		@media (max-width: 655px) {
+			padding: 50px 0 0 0;
+		}
+	}
+
+	&__title {
+		text-align: center;
+		p {
+			position: relative;
+			display: inline-block;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				height: 80px;
+				width: 25px;
+				position: absolute;
+				top: -42px;
+				left: -10px;
+				z-index: -1;
+				@media (max-width: 655px) {
+					height: 60px;
+					top: -32px;
+				}
+			}
+		}
+	}
+
+	&__body {
+		padding: 60px 20px;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		@media (max-width: 1200px) {
+			padding: 50px 20px 30px 20px;
+		}
+		@media (max-width: 655px) {
+			padding: 30px 20px 30px 20px;
+		}
+		.header__contacts {
+			padding: 0 10% 0 0;
+			@media (max-width: 767px) {
+				padding: 0;
+			}
+			@media (max-width: 655px) {
+				margin: 0 0 20px 0;
+			}
+			.contacts__text {
+				@media (max-width: 550px) {
+					display: flex;
+				}
+			}
+			a {
+				font-size: 22px;
+				@media (max-width: 550px) {
+					font-size: 20px;
+				}
+			}
+		}
+		.header__address {
+			justify-content: flex-start;
+			p {
+				font-size: 22px;
+				@media (max-width: 550px) {
+					display: flex;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+/*===================Стилизация блока карта====================*/
+
+.map {
+	&__container {
+		position: relative;
+	}
+	&__body {
+		position: absolute;
+		top: 120px;
+		left: 0;
+		width: 100%;
+		@media (max-width: 767px) {
+			top: 80px;
+		}
+		img {
+			width: 100%;
+			object-fit: cover;
+			height: 300px;
+		}
+	}
+}
+.site {
+	&__title {
+		min-height: 218px;
+		text-align: center;
+		color: #ffffff;
+		max-width: 1200px;
+		margin: 0 auto;
+		text-transform: uppercase;
+		font-family: "MuseoSansCyrl_700";
+		font-size: 182px;
+		letter-spacing: 25px;
+		@media (max-width: 1200px) {
+			padding: 0 20px;
+			letter-spacing: 15px;
+			@include adaptiv-font(182, 30);
+		}
+		@media (max-width: 767px) {
+			@include adaptiv-font(182, 30);
+		}
+	}
+}
+
+/*===================Стилизация блока футер====================*/
+
+.footer {
+	&__container {
+		padding: 230px 0 40px 0;
+		@media (max-width: 560px) {
+			padding: 220px 0 20px 0;
+		}
+		@media (max-width: 767px) {
+			padding: 180px 0 40px 0;
+		}
+		@media (max-width: 560px) {
+			padding: 180px 0 20px 0;
+		}
+	}
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		@media (max-width: 1200px) {
+			padding: 0 20px;
+		}
+	}
+
+	&__left {
+		flex: 0 1 60%;
+		display: flex;
+		justify-content: flex-start;
+		@media (max-width: 560px) {
+			flex: 1 1 100%;
+		}
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+	}
+
+	&__title {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 22px;
+		color: #565656;
+		padding: 0 0 0 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		@include adaptiv-font(22, 20);
+		p {
+			font-family: "MuseoSansCyrl_300";
+			font-size: 14px;
+			color: #565656;
+			@include adaptiv-font(14, 12);
+		}
+	}
+
+	&__right {
+		flex: 0 1 40%;
+		display: flex;
+		justify-content: flex-end;
+		@media (max-width: 560px) {
+			flex: 1 1 100%;
+			margin: 20px 0 0 0;
+		}
+		.link {
+			&__inst {
+				&:hover:before {
+					top: -5px;
+					left: -8px;
+				}
+			}
+			&__odnokl {
+				&:hover:before {
+					top: -5px;
+					left: -8px;
+				}
+			}
+		}
+		a {
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin: 0 0 0 25px;
+			&:not(:hover) {
+				transition: all 0.3s ease 0s;
+			}
+			&:hover {
+				transition: all 0.3s ease 0s;
+				&:before {
+					content: "";
+					position: absolute;
+					top: -5px;
+					left: -5px;
+					width: 40px;
+					height: 40px;
+					background: rgba(100%, 95%, 14%, 0.8);
+					border-radius: 50%;
+					z-index: -1;
+					transition: all 0.3s ease 0s;
+				}
+			}
+		}
+		svg {
+			width: 30px;
+			height: 30px;
+			fill: #bebfc0;
+		}
+		.vk {
+			width: 30px;
+			height: 30px;
+		}
+		.inst {
+			width: 25px;
+			height: 25px;
+		}
+		.youtube {
+			width: 30px;
+			height: 30px;
+		}
+		.odnokl {
+			width: 23px;
+			height: 23px;
+		}
+	}
+}
+.footer__right a:hover svg {
+	fill: #353535;
+}
+
+/*===================Стилизация страницы новостей====================*/
+
+.news-page {
+	&__container {
+		margin: 20px auto 0 auto;
+		background-color: #ffffff;
+		position: relative;
+		z-index: 2;
+		padding: 15px 20px 60px 20px;
+		@media (max-width: 900px) {
+			padding: 15px 20px 30px 20px;
+		}
+	}
+
+	&__title {
+		padding: 50px 70px 10px 70px;
+		@media (max-width: 1200px) {
+			padding: 30px 0 10px 50px;
+		}
+		@media (max-width: 1000px) {
+		}
+		p {
+			position: relative;
+			&:before {
+				content: "";
+				background-color: #fff324;
+				width: 80px;
+				height: 25px;
+				position: absolute;
+				top: 2px;
+				left: -56px;
+				z-index: -1;
+				@media (max-width: 1200px) {
+					left: -50px;
+				}
+			}
+		}
+	}
+
+	&__body {
+		padding: 30px 80px;
+		@media (max-width: 1200px) {
+			padding: 30px 0;
+		}
+		@media (max-width: 500px) {
+			padding: 15px 0 20px 0;
+		}
+	}
+
+	&__top {
+		display: flex;
+		@media (max-width: 900px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__left {
+		flex: 0 1 48%;
+		margin: 0 30px 0 0;
+		@media (max-width: 900px) {
+			flex: 1 1 100%;
+			margin: 0;
+		}
+		img {
+			@media (max-width: 500px) {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+	}
+
+	&__right {
+		flex: 0 1 48%;
+		position: relative;
+		@media (max-width: 1200px) {
+			flex: 0 1 53%;
+		}
+		@media (max-width: 900px) {
+			flex: 1 1 100%;
+		}
+	}
+
+	&__date {
+		display: inline-flex;
+		flex-direction: column;
+		background-color: #fcf024;
+		font-family: "MuseoSansCyrl_500";
+		font-size: 16px;
+		color: #565656;
+		padding: 5px;
+		@media (max-width: 900px) {
+			position: absolute;
+			top: -62px;
+		}
+		span {
+			font-family: "MuseoSansCyrl_500";
+			font-size: 33px;
+			line-height: 1;
+		}
+	}
+
+	&__bottom {
+		padding: 25px 0 0 0;
+		@media (max-width: 900px) {
+			padding: 5px 0 0 0;
+		}
+	}
+
+	&__button {
+		text-align: center;
+		margin: 60px 0 0 0;
+	}
+}
+
+.page {
+	&__top-title {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 22px;
+		color: #565656;
+		text-transform: uppercase;
+		padding: 20px 0;
+	}
+
+	&__top-text {
+		font-family: "MuseoSansCyrl_300";
+		font-size: 17px;
+		color: #565656;
+	}
+
+	&__bottom-title {
+		font-family: "MuseoSansCyrl_700";
+		font-size: 20px;
+		color: #565656;
+		padding: 20px 0;
+	}
+
+	&__bottom-text {
+		font-family: "MuseoSansCyrl_300";
+		font-size: 17px;
+		color: #565656;
+	}
+}
+
+/*===================Стилизация попапа 1====================*/
+
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #0707073f;
+	top: 0;
+	left: 0;
+	z-index: 1111;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: all 0.8s ease 0s;
+	&.open {
+		opacity: 1;
+		visibility: visible;
+	}
+	&__area {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	&__body {
+		min-height: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		padding: 100px 10px;
+	}
+
+	&__content {
+		background-color: #efefef;
+		max-width: 1200px;
+		padding: 30px 10px 80px 10px;
+		position: relative;
+		opacity: 0;
+		transform: translate(0px, -100%);
+		@media (max-width: 960px) {
+			flex-wrap: wrap;
+			padding: 30px 10px 60px 10px;
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 20px;
+		width: 30px;
+		height: 30px;
+
+		&:before {
+			content: "";
+			background-color: #bfbfbf;
+			width: 30px;
+			height: 3px;
+			position: absolute;
+			top: 10px;
+			left: 0;
+			transform: rotate(-45deg);
+		}
+		&:after {
+			content: "";
+			background-color: #bfbfbf;
+			width: 30px;
+			height: 3px;
+			position: absolute;
+			top: 10px;
+			left: 0;
+			transform: rotate(45deg);
+		}
+	}
+
+	&__title {
+		font-family: "MuseoSansCyrl_700";
+		@include adaptiv-font(25, 20);
+		color: #565656;
+		padding: 30px 70px 20px 70px;
+		text-transform: uppercase;
+		position: relative;
+		@media (max-width: 1200px) {
+		}
+		&:before {
+			content: "РА";
+			text-align: end;
+			background-color: #fff324;
+			width: 80px;
+			height: 25px;
+			position: absolute;
+			top: 30px;
+			left: 22px;
+			@media (max-width: 767px) {
+				left: 15px;
+			}
+		}
+	}
+
+	&__text {
+		font-family: "MuseoSansCyrl_500";
+		@include adaptiv-font(20, 18);
+		color: #565656;
+		padding: 0 70px;
+		@media (max-width: 1200px) {
+			padding: 0 20px;
+		}
+	}
+
+	&__line {
+		display: flex;
+		justify-content: space-around;
+		padding: 20px 20px 80px 20px;
+		@media (max-width: 1200px) {
+			padding: 20px 20px 80px 0;
+		}
+		@media (max-width: 960px) {
+			flex-wrap: wrap;
+			padding: 20px 20px 50px 20px;
+		}
+	}
+
+	&__item {
+		flex: 0 1 30%;
+		margin: 0 10px;
+		padding: 25px 15px 0 15px;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		&:hover {
+			background-color: #ffffffaf;
+		}
+		label {
+			cursor: pointer;
+		}
+		@media (max-width: 1200px) {
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		@media (max-width: 960px) {
+			flex: 0 1 40%;
+		}
+		@media (max-width: 640px) {
+			flex: 1 1 100%;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	&__img {
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	&__input {
+		display: none;
+	}
+	&__label {
+		flex-wrap: nowrap;
+		&:before {
+			content: "";
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: 27px;
+			left: 0;
+			border: 2px solid #565656;
+		}
+		&:after {
+			transform: scale(0);
+			content: "";
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: 27px;
+			left: 0;
+			transition: all 0.3s ease 0s;
+			background-color: #fff324;
+			border: none;
+			background: url("../assets/img/galka.png") center / 50% no-repeat #fff324;
+		}
+	}
+	&__select {
+		padding: 30px 0 25px 0;
+		position: relative;
+		span {
+			font-family: "MuseoSansCyrl_700";
+			@include adaptiv-font(18, 16);
+			color: #565656;
+			padding: 10px 0;
+			text-transform: uppercase;
+			margin: 0 0 0 50px;
+		}
+	}
+	.popup.open .popup__content {
+		transform: translate(0px, 0px);
+		opacity: 1;
+	}
+
+	.popup__input:checked + .popup__label:after {
+		transform: scale(1);
+	}
+	&__button {
+		text-align: center;
+	}
+}
